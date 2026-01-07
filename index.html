@@ -41,6 +41,11 @@ title: Welcome
     <div class="grid-floor-3d-boosted"></div>
     <div class="vignette-soft"></div>
 
+    <div class="device-optimization-notice">
+        <span class="notice-tr">SİSTEME EN İYİ ERİŞİM İÇİN LÜTFEN MASAÜSTÜ BİLGİSAYAR KULLANINIZ.</span>
+        <span class="notice-en">FOR THE BEST EXPERIENCE, PLEASE ACCESS VIA DESKTOP COMPUTER.</span>
+    </div>
+
     <div class="gateway-core">
         <div class="logo-area">
             <a href="/home/" class="logo-link">
@@ -85,30 +90,26 @@ html, body { height: 100% !important; width: 100% !important; margin: 0 !importa
 }
 @keyframes floorFlowBoost { 0% { background-position: 0 0; } 100% { background-position: 0 80px; } }
 
-/* --- YENİ: GERÇEKÇİ SVG KALP ATIŞI UFUK ÇİZGİSİ --- */
+/* --- SVG KALP ATIŞI UFUK ÇİZGİSİ --- */
 .heartbeat-horizon-svg {
     position: absolute;
-    top: 45%; /* Ufuk hizası */
+    top: 45%;
     left: 0;
     width: 100%;
-    height: 150px; /* Dalgaların sığacağı yükseklik */
+    height: 150px;
     transform: translateY(-50%);
     z-index: 3;
-    opacity: 0.6; /* Genel parlaklık ayarı */
+    opacity: 0.6;
     overflow: hidden;
-    /* Kenarlarda yumuşak geçiş için maske */
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-/* SVG Çizgisinin Kendisi ve Hareketi */
 .ekg-line {
-    /* Çizgiyi sürekli sola kaydırarak akış hissi veriyoruz */
     animation: ekgFlow 5s linear infinite;
 }
 
 @keyframes ekgFlow {
     0% { transform: translateX(0); }
-    /* 500px, SVG içindeki desenin tekrar etme uzunluğudur. Tam tur atınca başa döner. */
     100% { transform: translateX(-500px); } 
 }
 
@@ -118,6 +119,29 @@ html, body { height: 100% !important; width: 100% !important; margin: 0 !importa
     background: radial-gradient(circle, transparent 40%, var(--bg-dark) 100%);
     z-index: 4; pointer-events: none;
 }
+
+/* --- YENİ: CİHAZ OPTİMİZASYON UYARISI STİLİ --- */
+.device-optimization-notice {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    text-align: right;
+    z-index: 150;
+    font-family: 'JetBrains Mono', monospace;
+    pointer-events: none;
+    opacity: 0.4;
+    transition: opacity 0.5s;
+}
+.device-optimization-notice:hover { opacity: 0.8; } /* Geliştirici notu: Fare ile yaklaşıldığında parlar */
+
+.device-optimization-notice span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+.notice-en { margin-top: 4px; font-style: italic; }
 
 /* --- MERKEZİ İÇERİK --- */
 .gateway-core { position: relative; z-index: 100; text-align: center; width: 100%; max-width: 500px; }
